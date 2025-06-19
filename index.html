@@ -18,9 +18,9 @@
     <a href="#schedule">Schedule</a>
   </nav>
   <div class="hero">
-    <img src="images/Rainbow.png" alt="Rainbow" style="max-width: 200px; margin-top: 2rem;" />
     <h1>Welcome to Charlotte Camp!</h1>
-    <p>A fun and safe summer day camp for kids ages 5–10.</p>
+    <p>A fun and safe summer day camp for kids ages 5–12.</p>
+    <img src="images/rainbow.png" alt="Rainbow" style="max-width: 200px; margin-top: 2rem;" />
     <button class="cta">Register Now</button>
   </div>
   <div id="about" class="section">
@@ -50,11 +50,47 @@
       <img src="images/Games.png" alt="Games" width="64" />
       <img src="images/Music.png" alt="Music" width="64" />
       <img src="images/Water.png" alt="Nature" width="64" />
+      //<img src="images/icon-theater.png" alt="Theater" width="64" />
     </div>
+  </div>
+  <div class="section" style="text-align: center;">
+    <h2>Countdown to Camp!</h2>
+    <div id="countdown" style="font-size: 1.5rem; margin-top: 1rem; color: #4A7C59;"></div>
+    <script>
+      const campDate = new Date("July 8, 2025 09:00:00").getTime();
+      const countdownEl = document.getElementById("countdown");
+      const updateCountdown = () => {
+        const now = new Date().getTime();
+        const distance = campDate - now;
+        if (distance < 0) {
+          countdownEl.innerHTML = "Camp is in session!";
+          return;
+        }
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      };
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+    </script>
+  </div>
+  <div class="section" style="text-align: center;">
+    <h2>Today's Weather at Camp</h2>
+    <a class="weatherwidget-io" href="https://forecast7.com/en/41d87n88d34/warrenville/" data-label_1="WARRENVILLE" data-label_2="WEATHER" data-icons="climacons" data-theme="pure">WARRENVILLE WEATHER</a>
+    <script>
+      !function(d,s,id){
+        var js,fjs=d.getElementsByTagName(s)[0];
+        if(!d.getElementById(id)){
+          js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';
+          fjs.parentNode.insertBefore(js,fjs);
+        }
+      }(document,'script','weatherwidget-io-js');
+    </script>
   </div>
   <footer>
     <p>&copy; 2025 Charlotte Camp. All rights reserved.</p>
   </footer>
 </body>
 </html>
-
